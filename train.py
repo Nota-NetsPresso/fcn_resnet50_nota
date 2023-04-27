@@ -223,7 +223,7 @@ def main(args):
     if args.distributed:
         model = torch.nn.parallel.DistributedDataParallel(model, device_ids=[args.gpu])
         model_without_ddp = model.module
-    if args.npmc_mode:
+    if args.netspresso:
         backbone = []
         classifier = []
         aux_classifier = []
@@ -380,7 +380,7 @@ def get_args_parser(add_help=True):
 
     # Mixed precision training parameters
     parser.add_argument("--amp", action="store_true", help="Use torch.cuda.amp for mixed precision training")
-    parser.add_argument('--npmc-mode',action="store_true", help="Train model compressed by NetsPresso")
+    parser.add_argument('--netspresso',action="store_true", help="Train model compressed by NetsPresso")
     return parser
 
 
